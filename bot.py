@@ -2,12 +2,11 @@ import praw
 import datetime as dt
 import random
 import time
-from multiprocessing import Process
 
 def get_fact():
     fact=random.choice(list(open('alpaca_facts.txt')))
 
-    text=("Hello there! I am a bot raising awareness of Alpaca's"
+    text=("Hello there! I am a bot raising awareness of Alpacas"
         "\n \n Here is an Alpaca Fact:"
         f"\n \n {fact}"
         "\n \n ______ \n \n"
@@ -16,19 +15,23 @@ def get_fact():
         "| [Feedback](http://np.reddit.com/message/compose/?to=JustAnAlpacaBot&subject=Feedback)"
         "| [Contribute Fact](http://np.reddit.com/message/compose/?to=JustAnAlpacaBot&subject=Fact)"
         "\n \n ____ \n \n"
-        "\n \n It takes about $50/month to keep this bot running."
-        "\n \n If you liked this fact, consider donating [here](https://www.paypal.me/csoham358)")
+        "\n \n"
+        "\n \n If you liked this fact, consider donating [here](https://github.com/soham96/AlpacaBot/blob/master/README.md)")
     
     return text
 
 def get_comments():
     print(time.time())
-    for comment in reddit.subreddit('all').stream.comments(skip_existing=True):
-        if comment.author == 'JustAnAlpacaBot':
-            continue
-        if 'alpaca' in comment.body.lower():
-                reply_alpaca(comment.id, 'comment')
-                print(time.time())
+
+    try:
+        for comment in reddit.subreddit('all').stream.comments(skip_existing=True):
+            if comment.author == 'JustAnAlpacaBot':
+                continue
+            if 'alpaca' in comment.body.lower():
+                    reply_alpaca(comment.id, 'comment')
+                    print(time.time())
+    except:
+        pass
         
 
 def reply_alpaca(post_id, post_type):
@@ -49,13 +52,11 @@ def reply_alpaca(post_id, post_type):
             comment.reply(get_fact())
             print(f"Commented on {post_type} with {post_id} and url {comment.permalink}")
         except:
-            time.sleep(600)
-            comment.reply(get_fact())
-            print(f"Commented on {post_type} {post_id} and url {comment.permalink}")
+            print(f"Could not comment {post_id}")
 
 def main(reddit):
-    get_comments()
-
+    while True:
+        get_comments()
 
 if __name__ == "__main__":
     reddit=praw.Reddit(client_id='your_client_id',
