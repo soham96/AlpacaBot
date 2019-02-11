@@ -30,7 +30,8 @@ def get_comments():
             if 'alpaca' in comment.body.lower():
                     reply_alpaca(comment.id, 'comment')
                     print(time.time())
-    except:
+    except Exception as e:
+        print(e)
         pass
         
 
