@@ -4,19 +4,23 @@ import random
 import time
 
 def get_fact():
-    fact=random.choice(list(open('alpaca_facts.txt')))
+    fact = random.choice(list(open('alpaca_facts.txt')))
 
-    text=("Hello there! I am a bot raising awareness of Alpacas"
-        "\n \n Here is an Alpaca Fact:"
-        f"\n \n {fact}"
-        "\n \n ______ \n \n"
-        "| [Info](https://github.com/soham96/AlpacaBot/blob/master/README.md)"
-        "| [Code](https://github.com/soham96/AlpacaBot)"
-        "| [Feedback](http://np.reddit.com/message/compose/?to=JustAnAlpacaBot&subject=Feedback)"
-        "| [Contribute Fact](http://np.reddit.com/message/compose/?to=JustAnAlpacaBot&subject=Fact)"
-        "\n \n ____ \n \n"
-        "\n \n"
-        "\n \n If you liked this fact, consider donating [here](https://github.com/soham96/AlpacaBot/blob/master/README.md)")
+    text = f"""Hello there! I am a bot raising awareness of Alpacas
+
+Here is an Alpaca Fact:
+
+{fact}
+
+______
+| [Info](https://github.com/soham96/AlpacaBot/blob/master/README.md)
+| [Code](https://github.com/soham96/AlpacaBot)
+| [Feedback](http://np.reddit.com/message/compose/?to=JustAnAlpacaBot&subject=Feedback)
+| [Contribute Fact](http://np.reddit.com/message/compose/?to=JustAnAlpacaBot&subject=Fact)
+____
+
+
+If you liked this fact, consider donating [here](https://github.com/soham96/AlpacaBot/blob/master/README.md)"""
     
     return text
 
