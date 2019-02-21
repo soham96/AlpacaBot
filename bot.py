@@ -15,8 +15,7 @@ def get_fact():
         "| [Feedback](http://np.reddit.com/message/compose/?to=JustAnAlpacaBot&subject=Feedback)"
         "| [Contribute Fact](http://np.reddit.com/message/compose/?to=JustAnAlpacaBot&subject=Fact)"
         "\n \n ____ \n \n"
-        "\n \n"
-        "\n \n If you liked this fact, consider donating [here](https://github.com/soham96/AlpacaBot/blob/master/README.md)")
+        "\n \n")
     
     return text
 
