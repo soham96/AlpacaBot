@@ -5,7 +5,7 @@ Code for u/JustAnAlpacaBot on Reddit
 To see stats for the first month of the bot running or to generate your own stats, you can use [this](alpaca_stats.py) script
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/adamshamsudeen/Vaaku2Vec/master/img/logo.png" width="500" height="500" />
+<img src="https://github.com/soham96/AlpacaBot/raw/master/one_month_alpaca_stat.jpg" width="1000" height="800" />
 </p>
 
 # Donating
