@@ -24,12 +24,14 @@ def get_comments():
     print(time.time())
 
     try:
-        for comment in reddit.subreddit('all').stream.comments(skip_existing=True):
+        for comment in reddit.subreddit('all').stream.comments(skip_existing=False):
             if comment.author == 'JustAnAlpacaBot':
                 continue
             if 'alpaca' in comment.body.lower():
                     reply_alpaca(comment.id, 'comment')
                     print(time.time())
+    except KeyboardInterrupt:
+        raise
     except Exception as e:
         print(e)
         pass
