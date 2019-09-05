@@ -2,6 +2,7 @@ import praw
 import datetime as dt
 import random
 import time
+import re
 
 def get_fact():
     fact=random.choice(list(open('alpaca_facts.txt')))
@@ -27,7 +28,7 @@ def get_comments():
         for comment in reddit.subreddit('all').stream.comments(skip_existing=False):
             if comment.author == 'JustAnAlpacaBot':
                 continue
-            if 'alpaca' in comment.body.lower():
+            if re.search(r'\balpaca\b',comment.body,re.I) != None:
                     reply_alpaca(comment.id, 'comment')
                     print(time.time())
     except KeyboardInterrupt:
