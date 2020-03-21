@@ -36,12 +36,12 @@ def get_comments():
         pass        
 
 def reply_alpaca(comment):
-
     try:
         comment.reply(get_fact())
         print(f"Commented on {comment.id} and url {comment.permalink}")
     except:
         print(f"Could not comment {comment.id}")
+
 def main(reddit):
     while True:
         get_comments()
