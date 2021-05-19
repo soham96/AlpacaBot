@@ -33,8 +33,7 @@ def get_comments():
     except KeyboardInterrupt:
         raise
     except Exception as e:
-        print(e)
-        pass        
+        print(e)        
 
 def reply_alpaca(comment):
     try:
