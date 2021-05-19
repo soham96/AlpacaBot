@@ -86,6 +86,11 @@ jobs:
       run: |-
         curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
         chmod u+x ./kustomize
+      env:
+        PRAW_CLIENT_ID:  ${{ secrets.PRAW_CLIENT_ID }}
+        PRAW_CLIENT_SECRET: ${{ secrets.PRAW_CLIENT_SECRET }}
+        PRAW_PASSWORD: ${{ secrets.PRAW_PASSWORD }}
+        PRAW_USER_AGENT: ${{ secrets.PRAW_USER_AGENT }}
 
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
