@@ -20,8 +20,8 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
   GCP_CLUSTER: ${{ secrets.GCP_CLUSTER }}    # TODO: update to cluster name
-  GCP_ZONE: us-central1-c   # TODO: update to cluster zone
-  DEPLOYMENT_NAME: gke-test # TODO: update to deployment name
+  GCP_ZONE: us-central1   # TODO: update to cluster zone
+  DEPLOYMENT_NAME: reddit_bot # TODO: update to deployment name
   IMAGE: static-site
   PRAW_CLIENT_ID:  ${{ secrets.PRAW_CLIENT_ID }}
   PRAW_CLIENT_SECRET: ${{ secrets.PRAW_CLIENT_SECRET }}
