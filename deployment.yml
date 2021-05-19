@@ -6,7 +6,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gke-test
+      app: reddit_bot
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -15,10 +15,10 @@ spec:
   template:
     metadata:
       labels:
-        app: gke-test
+        app: reddit_bot
     spec:
       containers:
-      - name: gke-test
+      - name: reddit_bot
         image: gcr.io/PROJECT_ID/IMAGE:TAG
         ports:
         - containerPort: 5000
