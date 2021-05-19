@@ -23,10 +23,10 @@ spec:
         ports:
         - containerPort: 5000
         env:
-          PRAW_CLIENT_ID:  ${{ secrets.PRAW_CLIENT_ID }}
-          PRAW_CLIENT_SECRET: ${{ secrets.PRAW_CLIENT_SECRET }}
-          PRAW_PASSWORD: ${{ secrets.PRAW_PASSWORD }}
-          PRAW_USER_AGENT: ${{ secrets.PRAW_USER_AGENT }}
+          PRAW_CLIENT_ID: PRAW_CLIENT_ID
+          PRAW_CLIENT_SECRET: PRAW_CLIENT_SECRET
+          PRAW_PASSWORD: PRAW_PASSWORD
+          PRAW_USER_AGENT: PRAW_USER_AGENT
         resources:
           requests:
             cpu: 100m
