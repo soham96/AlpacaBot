@@ -48,6 +48,8 @@ def main(reddit):
         get_comments()
 
 if __name__ == "__main__":
+    print(os.getenv('PRAW_CLIENT_ID'))
+    print(os.getenv('PRAW_CLIENT_SECRET'))
     reddit=praw.Reddit(client_id=os.getenv('PRAW_CLIENT_ID'),
                         client_secret=os.getenv('PRAW_CLIENT_SECRET'),
                         user_agent=os.getenv('PRAW_USER_AGENT'),
