@@ -1,4 +1,5 @@
 import praw
+import os
 import datetime as dt
 import random
 import time
@@ -47,10 +48,10 @@ def main(reddit):
         get_comments()
 
 if __name__ == "__main__":
-    reddit=praw.Reddit(client_id='your_client_id',
-                        client_secret='your_secret',
-                        user_agent='Alpaca Facts by u/JustAnAlpacaBot',
+    reddit=praw.Reddit(client_id=os.getenv('PRAW_CLIENT_ID'),
+                        client_secret=os.getenv('PRAW_CLIENT_SECRET'),
+                        user_agent=os.getenv('PRAW_USER_AGENT'),
                         username='JustAnAlpacaBot',
-                        password='my_password')
+                        password=os.getenv('PRAW_PASSWORD'))
     
     main(reddit)
