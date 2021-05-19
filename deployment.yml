@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: reddit_bot
+  name: reddit-bot
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: reddit_bot
+      app: reddit-bot
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -15,10 +15,10 @@ spec:
   template:
     metadata:
       labels:
-        app: reddit_bot
+        app: reddit-bot
     spec:
       containers:
-      - name: reddit_bot
+      - name: reddit-bot
         image: gcr.io/PROJECT_ID/IMAGE:TAG
         ports:
         - containerPort: 5000
