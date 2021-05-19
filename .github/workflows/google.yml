@@ -65,11 +65,21 @@ jobs:
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" \
           .
+      env:
+        PRAW_CLIENT_ID:  ${{ secrets.PRAW_CLIENT_ID }}
+        PRAW_CLIENT_SECRET: ${{ secrets.PRAW_CLIENT_SECRET }}
+        PRAW_PASSWORD: ${{ secrets.PRAW_PASSWORD }}
+        PRAW_USER_AGENT: ${{ secrets.PRAW_USER_AGENT }}
 
     # Push the Docker image to Google Container Registry
     - name: Publish
       run: |-
         docker push "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA"
+      env:
+        PRAW_CLIENT_ID:  ${{ secrets.PRAW_CLIENT_ID }}
+        PRAW_CLIENT_SECRET: ${{ secrets.PRAW_CLIENT_SECRET }}
+        PRAW_PASSWORD: ${{ secrets.PRAW_PASSWORD }}
+        PRAW_USER_AGENT: ${{ secrets.PRAW_USER_AGENT }}
 
     # Set up kustomize
     - name: Set up Kustomize
@@ -84,3 +94,8 @@ jobs:
         ./kustomize build . | kubectl apply -f -
         kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
+      env:
+        PRAW_CLIENT_ID:  ${{ secrets.PRAW_CLIENT_ID }}
+        PRAW_CLIENT_SECRET: ${{ secrets.PRAW_CLIENT_SECRET }}
+        PRAW_PASSWORD: ${{ secrets.PRAW_PASSWORD }}
+        PRAW_USER_AGENT: ${{ secrets.PRAW_USER_AGENT }}
