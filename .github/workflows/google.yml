@@ -66,20 +66,20 @@ jobs:
           --build-arg GITHUB_REF="$GITHUB_REF" \
           .
       env:
-        PRAW_CLIENT_ID:  ${{ secrets.PRAW_CLIENT_ID }}
-        PRAW_CLIENT_SECRET: ${{ secrets.PRAW_CLIENT_SECRET }}
-        PRAW_PASSWORD: ${{ secrets.PRAW_PASSWORD }}
-        PRAW_USER_AGENT: ${{ secrets.PRAW_USER_AGENT }}
+        PRAW_CLIENT_ID:  $PRAW_CLIENT_ID
+        PRAW_CLIENT_SECRET: $PRAW_CLIENT_SECRET
+        PRAW_PASSWORD: $PRAW_PASSWORD
+        PRAW_USER_AGENT: $PRAW_USER_AGENT
 
     # Push the Docker image to Google Container Registry
     - name: Publish
       run: |-
         docker push "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA"
       env:
-        PRAW_CLIENT_ID:  ${{ secrets.PRAW_CLIENT_ID }}
-        PRAW_CLIENT_SECRET: ${{ secrets.PRAW_CLIENT_SECRET }}
-        PRAW_PASSWORD: ${{ secrets.PRAW_PASSWORD }}
-        PRAW_USER_AGENT: ${{ secrets.PRAW_USER_AGENT }}
+        PRAW_CLIENT_ID:  $PRAW_CLIENT_ID
+        PRAW_CLIENT_SECRET: $PRAW_CLIENT_SECRET
+        PRAW_PASSWORD: $PRAW_PASSWORD
+        PRAW_USER_AGENT: $PRAW_USER_AGENT
 
     # Set up kustomize
     - name: Set up Kustomize
@@ -87,10 +87,10 @@ jobs:
         curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
         chmod u+x ./kustomize
       env:
-        PRAW_CLIENT_ID:  ${{ secrets.PRAW_CLIENT_ID }}
-        PRAW_CLIENT_SECRET: ${{ secrets.PRAW_CLIENT_SECRET }}
-        PRAW_PASSWORD: ${{ secrets.PRAW_PASSWORD }}
-        PRAW_USER_AGENT: ${{ secrets.PRAW_USER_AGENT }}
+        PRAW_CLIENT_ID:  $PRAW_CLIENT_ID
+        PRAW_CLIENT_SECRET: $PRAW_CLIENT_SECRET
+        PRAW_PASSWORD: $PRAW_PASSWORD
+        PRAW_USER_AGENT: $PRAW_USER_AGENT
 
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
@@ -100,7 +100,7 @@ jobs:
         kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
       env:
-        PRAW_CLIENT_ID:  ${{ secrets.PRAW_CLIENT_ID }}
-        PRAW_CLIENT_SECRET: ${{ secrets.PRAW_CLIENT_SECRET }}
-        PRAW_PASSWORD: ${{ secrets.PRAW_PASSWORD }}
-        PRAW_USER_AGENT: ${{ secrets.PRAW_USER_AGENT }}
+        PRAW_CLIENT_ID:  $PRAW_CLIENT_ID
+        PRAW_CLIENT_SECRET: $PRAW_CLIENT_SECRET
+        PRAW_PASSWORD: $PRAW_PASSWORD
+        PRAW_USER_AGENT: $PRAW_USER_AGENT
