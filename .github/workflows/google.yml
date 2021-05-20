@@ -69,6 +69,16 @@ jobs:
           --build-arg PRAW_PASSWORD="$PRAW_PASSWORD" \
           --build-arg PRAW_USER_AGENT="$PRAW_USER_AGENT" \
           .        
+        env:
+          PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+          GCP_CLUSTER: ${{ secrets.GCP_CLUSTER }}    # TODO: update to cluster name
+          GCP_ZONE: us-central1   # TODO: update to cluster zone
+          DEPLOYMENT_NAME: reddit-bot # TODO: update to deployment name
+          IMAGE: static-site
+          PRAW_CLIENT_ID:  ${{ secrets.PRAW_CLIENT_ID }}
+          PRAW_CLIENT_SECRET: ${{ secrets.PRAW_CLIENT_SECRET }}
+          PRAW_PASSWORD: ${{ secrets.PRAW_PASSWORD }}
+          PRAW_USER_AGENT: ${{ secrets.PRAW_USER_AGENT }}
 
     # Push the Docker image to Google Container Registry
     - name: Publish
