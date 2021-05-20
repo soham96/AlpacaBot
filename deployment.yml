@@ -22,15 +22,6 @@ spec:
         image: gcr.io/PROJECT_ID/IMAGE:TAG
         ports:
         - containerPort: 5000
-        env:
-          - name: PRAW_CLIENT_ID
-            value: ${{secrets.PRAW_CLIENT_ID}}
-          - name: PRAW_CLIENT_SECRET
-            value: PRAW_CLIENT_SECRET
-          - name: PRAW_PASSWORD
-            value: PRAW_PASSWORD
-          - name: PRAW_USER_AGENT
-            value: ${PRAW_USER_AGENT}
         resources:
           requests:
             cpu: 100m
