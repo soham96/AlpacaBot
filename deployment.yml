@@ -30,7 +30,7 @@ spec:
           - name: PRAW_PASSWORD
             value: PRAW_PASSWORD
           - name: PRAW_USER_AGENT
-            value: $PRAW_USER_AGENT
+            value: ${PRAW_USER_AGENT}
         resources:
           requests:
             cpu: 100m
