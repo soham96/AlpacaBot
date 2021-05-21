@@ -64,10 +64,10 @@ jobs:
           --tag "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" \
-          --build-arg PRAW_CLIENT_ID="$PRAW_CLIENT_ID" \
-          --build-arg PRAW_CLIENT_SECRET="$PRAW_CLIENT_SECRET" \
-          --build-arg PRAW_PASSWORD="$PRAW_PASSWORD" \
-          --build-arg PRAW_USER_AGENT="$PRAW_USER_AGENT" \
+          --env PRAW_CLIENT_ID="$PRAW_CLIENT_ID" \
+          --env PRAW_CLIENT_SECRET="$PRAW_CLIENT_SECRET" \
+          --env PRAW_PASSWORD="$PRAW_PASSWORD" \
+          --env PRAW_USER_AGENT="$PRAW_USER_AGENT" \
           .        
       env:
         PROJECT_ID: ${{ secrets.GCP_PROJECT }}
