@@ -54,7 +54,7 @@ jobs:
     - uses: google-github-actions/get-gke-credentials@v0.2.1
       with:
         cluster_name: ${{ secrets.GCP_CLUSTER }}
-        location: asia-southeast1
+        location: us-central1
         credentials: ${{ secrets.GCP_CREDENTIALS }}
 
     # Build the Docker image
