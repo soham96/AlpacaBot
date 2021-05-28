@@ -12,12 +12,13 @@ spec:
       labels:
         app: reddit-bot
     spec:
-      envFrom:
-            - configMapRef:
-                name: reddit-bot-configmap
       containers:
       - name: reddit-bot
         image: gcr.io/<PROJECT_ID>/<IMAGE>:<TAG>
+        imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: reddit-bot-configmap
         command:
             - python
         args:
