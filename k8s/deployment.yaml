@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reddit-bot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reddit-bot
+  template:
+    metadata:
+      labels:
+        app: reddit-bot
+    spec:
+      containers:
+      - name: reddit-bot
+        image: gcr.io/<PROJECT_ID>/<IMAGE>:<TAG>
+        imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: reddit-bot-configmap
+        command:
+            - python
+        args:
+            - bot.py
+        resources:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 100m
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: reddit-bot-configmap
+data:
+  PRAW_CLIENT_ID: <PRAW_CLIENT_ID>
+  PRAW_CLIENT_SECRET: <PRAW_CLIENT_SECRET>
+  PRAW_PASSWORD: <PRAW_PASSWORD>
+  PRAW_USER_AGENT: <PRAW_USER_AGENT>
