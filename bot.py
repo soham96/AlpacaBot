@@ -27,7 +27,8 @@ def get_comments():
         for comment in subreddit.stream.comments(skip_existing=False):
             if comment.author == 'JustAnAlpacaBot':
                 continue
-            if 'alpaca' in comment.body.lower():
+            if 'alpaca' in comment.body.lower():            
+                if 'JustAnAlpacaBot' not in comment.body:
                     reply_alpaca(comment)
                     print(time.time())
     except KeyboardInterrupt:
