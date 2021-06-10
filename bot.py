@@ -20,17 +20,13 @@ def get_fact():
     return text
 
 def get_comments():
-    print(time.time())
-
     try:
         subreddit=reddit.subreddit('all')
         for comment in subreddit.stream.comments(skip_existing=False):
-            if comment.author == 'JustAnAlpacaBot':
+            if comment.author in ['JustAnAlpacaBot', 'B0tRank']:
                 continue
-            if 'alpaca' in comment.body.lower():            
-                if 'JustAnAlpacaBot' not in comment.body:
+            if 'alpaca' in comment.body.lower() and random.random()<0.3:            
                     reply_alpaca(comment)
-                    print(time.time())
     except KeyboardInterrupt:
         raise
     except Exception as e:
@@ -52,12 +48,6 @@ def main(reddit):
             break
 
 if __name__ == "__main__":
-    print(os.getenv('PRAW_CLIENT_ID'))
-    print(os.getenv('PRAW_CLIENT_SECRET'))
-    print(os.getenv('PRAW_USER_AGENT'))
-    print(os.getenv('INPUT_PRAW_CLIENT_ID'))
-    print(os.getenv('INPUT_PRAW_CLIENT_SECRET'))
-    print(os.getenv('INPUT_PRAW_USER_AGENT'))
     reddit=praw.Reddit(client_id=os.getenv('PRAW_CLIENT_ID'),
                         client_secret=os.getenv('PRAW_CLIENT_SECRET'),
                         user_agent=os.getenv('PRAW_USER_AGENT'),
